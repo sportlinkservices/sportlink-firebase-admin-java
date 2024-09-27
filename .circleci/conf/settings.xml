@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <mirrors>
+        <mirror>
+            <id>nexus-sportlink</id>
+            <mirrorOf>*</mirrorOf>
+            <url>https://nexus.sportlink-playground.nl/repository/sportlink</url>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <id>nexus-sportlink</id>
+            <repositories>
+                <repository>
+                    <id>nexus-sportlink</id>
+                    <url>https://nexus.sportlink-playground.nl/repository/sportlink</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>nexus-sportlink</id>
+                    <url>https://nexus.sportlink-playground.nl/repository/sportlink</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <servers>
+        <server>
+            <id>nexus-sportlink-snapshots</id>
+            <username>${env.NEXUS_USERNAME}</username>
+            <password>${env.NEXUS_PASSWORD}</password>
+        </server>
+        <server>
+            <id>nexus-sportlink-releases</id>
+            <username>${env.NEXUS_USERNAME}</username>
+            <password>${env.NEXUS_PASSWORD}</password>
+        </server>
+        <server>
+            <id>nexus-sportlink</id>
+            <username>${env.NEXUS_USERNAME}</username>
+            <password>${env.NEXUS_PASSWORD}</password>
+        </server>
+    </servers>
+    <activeProfiles>
+        <activeProfile>nexus-sportlink</activeProfile>
+    </activeProfiles>
+</settings>

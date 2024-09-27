@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.google.firebase</groupId>
-    <artifactId>firebase-admin</artifactId>
+    <artifactId>sportlink-firebase-admin</artifactId>
     <version>9.3.0</version>
     <packaging>jar</packaging>
 
@@ -71,9 +71,16 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>nexus-sportlink-snapshots</id>
+            <name>Sportlink Snapshot Repository</name>
+            <url>https://nexus.sportlink-playground.nl/repository/sportlink-snapshots</url>
         </snapshotRepository>
+
+        <repository>
+            <id>nexus-sportlink-releases</id>
+            <name>Sportlink Repository</name>
+            <url>https://nexus.sportlink-playground.nl/repository/sportlink-releases</url>
+        </repository>
     </distributionManagement>
 
     <profiles>
@@ -238,6 +245,7 @@
     </profiles>
 
     <build>
+<!--        <finalName>${artifactId}-${version}-0sportlink1</finalName>-->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

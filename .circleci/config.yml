@@ -1,0 +1,48 @@
+version: 2.1
+orbs:
+  docker: circleci/docker@2.5.0
+  maven: circleci/maven@1.4.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/openjdk:17.0
+    steps:
+      - checkout
+      - maven/with_cache:
+          verify_dependencies: false
+          steps:
+            - run:
+                name: Build and test
+                command: mvn test -s .circleci/conf/settings.xml
+
+  release_artifact:
+    docker:
+      - image: cimg/openjdk:17.0
+    steps:
+      - checkout
+      - maven/with_cache:
+          verify_dependencies: false
+          steps:
+            - run:
+                name: Release package
+                command: mvn -Dmaven.javadoc.skip=true deploy -s .circleci/conf/settings.xml
+
+workflows:
+  feature:
+    when:
+      equal: [ sportlink, << pipeline.git.branch >> ]
+    jobs:
+      - test:
+          context: [ sportlink_nexus ]
+
+  release:
+    jobs:
+      - release_artifact:
+          context: [ sportlink_nexus ]
+          filters:
+            tags:
+              only: /^((?!-migration).)*$/
+            branches:
+              ignore: /.*/
+          image-tag: $CIRCLE_TAG
