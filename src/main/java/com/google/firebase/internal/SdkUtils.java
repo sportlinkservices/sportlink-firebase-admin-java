@@ -44,7 +44,11 @@ public class SdkUtils {
         .getResourceAsStream(ADMIN_SDK_PROPERTIES)) {
       Properties properties = new Properties();
       properties.load(checkNotNull(in, "Failed to load: " + ADMIN_SDK_PROPERTIES));
-      return properties.getProperty("sdk.version");
+      String sdkVersion = properties.getProperty("sdk.version");
+      if (sdkVersion.contains("-sportlink")) { // remove sportlink specific version
+        sdkVersion = sdkVersion.substring(0, sdkVersion.indexOf("-"));
+      }
+      return sdkVersion;
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
