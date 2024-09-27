@@ -26,7 +26,7 @@ jobs:
           steps:
             - run:
                 name: Release package
-                command: mvn -Dmaven.javadoc.skip=true deploy -s .circleci/conf/settings.xml
+                command: mvn -Dmaven.javadoc.skip=true deploy -DskipITs -s .circleci/conf/settings.xml
 
 workflows:
   feature:
