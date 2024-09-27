@@ -45,4 +45,4 @@ workflows:
               only: /^((?!-migration).)*$/
             branches:
               ignore: /.*/
-          image-tag: $CIRCLE_TAG
+
