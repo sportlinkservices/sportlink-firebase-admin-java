@@ -19,7 +19,7 @@
 
     <groupId>com.google.firebase</groupId>
     <artifactId>firebase-admin</artifactId>
-    <version>9.3.0-sportlink2</version>
+    <version>9.3.0-sportlink3</version>
     <packaging>jar</packaging>
 
     <name>firebase-admin</name>
@@ -356,18 +356,6 @@
                 </executions>
             </plugin>
 
-            <!-- Deploy Phase -->
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.7.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
